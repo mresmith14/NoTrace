@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">🧹</div>
+      <h1>URL Cleaner</h1>
+      <label class="toggle-switch">
+        <input type="checkbox" id="enabled-toggle" checked>
+        <span class="slider"></span>
+      </label>
+    </header>
+
+    <div id="main-content">
+      <!-- Last Cleaned Section -->
+      <div id="last-cleaned" class="section hidden">
+        <div class="section-title">Last Cleaned</div>
+        <div class="clean-card">
+          <div class="clean-stats">
+            <div class="stat">
+              <span class="stat-number" id="removed-count">0</span>
+              <span class="stat-label">params removed</span>
+            </div>
+          </div>
+          <div class="param-list" id="param-list"></div>
+          <button class="btn btn-secondary btn-small" id="copy-cleaned">Copy Clean URL</button>
+        </div>
+      </div>
+
+      <!-- Current Page Section -->
+      <div class="section">
+        <div class="section-title">Current Page</div>
+        <div id="current-url" class="url-display">Loading...</div>
+        <button class="btn btn-primary" id="clean-current">Clean This Page</button>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-value" id="total-cleaned">0</div>
+          <div class="stat-label">URLs cleaned</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" id="total-params">0</div>
+          <div class="stat-label">Params removed</div>
+        </div>
+      </div>
+
+      <!-- Settings -->
+      <div class="section">
+        <div class="section-title">Settings</div>
+        
+        <label class="setting-item">
+          <input type="checkbox" id="clean-navigate" checked>
+          <span class="checkmark"></span>
+          <span class="setting-text">Clean on page navigation</span>
+        </label>
+
+        <label class="setting-item">
+          <input type="checkbox" id="clean-copy" checked>
+          <span class="checkmark"></span>
+          <span class="setting-text">Clean when copying links</span>
+        </label>
+
+        <label class="setting-item">
+          <input type="checkbox" id="aggressive-mode">
+          <span class="checkmark"></span>
+          <span class="setting-text">Aggressive mode (pattern matching)</span>
+        </label>
+
+        <label class="setting-item">
+          <input type="checkbox" id="show-notifications" checked>
+          <span class="checkmark"></span>
+          <span class="setting-text">Show notifications</span>
+        </label>
+      </div>
+
+      <!-- Custom Params -->
+      <div class="section">
+        <div class="section-title">Custom Parameters</div>
+        <div class="input-group">
+          <input type="text" id="custom-param" placeholder="Add parameter to block...">
+          <button class="btn btn-icon" id="add-param">+</button>
+        </div>
+        <div id="custom-params-list" class="tag-list"></div>
+      </div>
+    </div>
+
+    <footer>
+      <button class="btn btn-text" id="view-log">View Activity Log</button>
+      <button class="btn btn-text" id="reset-stats">Reset Stats</button>
+    </footer>
+  </div>
+
+  <!-- Activity Log Modal -->
+  <div id="log-modal" class="modal hidden">
+    <div class="modal-header">
+      <h2>Activity Log</h2>
+      <button class="close-btn" id="close-log">✕</button>
+    </div>
+    <div id="log-content" class="log-content">
+      <div class="empty">No activity yet</div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
